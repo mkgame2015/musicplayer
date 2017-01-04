@@ -36,6 +36,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		})
 		.state('tabs.search', {
 			url: "/search",
+//			abstract: true,
 			views: {
 				'search-tab': {
 					templateUrl: "search.html",
@@ -45,8 +46,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		})
 		.state('tabs.search.searchlist', {
 			url: "/searchlist",
-			templateUrl: "searchlist.html",
-			controller:'searchlistCtrl'
+			views: {
+				'search-tab': {
+						templateUrl: "searchlist.html",
+						controller:'searchlistCtrl'
+				}
+			}
+		
 		})
 		.state('tabs.contact', {
 			url: "/contact",
@@ -56,15 +62,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				}
 			}
 		});
-
 	$urlRouterProvider.otherwise("/tab/play");
-
 });
-
 //app.controller('HomeTabCtrl', function($scope) {
 //	console.log('HomeTabCtrl');
 //});
-
 app.controller('tabsCtrl', function($rootScope,$scope,$http) {
 	//获取audio对象
 	$scope.music = document.querySelector('#ado');
@@ -140,7 +142,6 @@ app.controller('listCtrl',function($scope,$window){
 	}
 
 });
-
 app.controller('factsCtrl',function($scope){
 	//发送当前歌曲id
 	$scope.playsong = function(idx){
@@ -148,8 +149,8 @@ app.controller('factsCtrl',function($scope){
 		$scope.$emit('cursong',idx);
 	}
 })
-
 app.controller('searchCtrl',function($scope,$http,$window){
+	$scope.songlist="";
 	$scope.bool = false;
 	$scope.search = function(){
 		$http.get('http://route.showapi.com/213-1',{
@@ -160,13 +161,14 @@ app.controller('searchCtrl',function($scope,$http,$window){
 	         	keyword:$scope.keyword
 			}
 		}).success(function(data){
-			console.log(111);
-//			$scope.bool = true;
-//			console.log(data);
-//			$scope.songlist = data.showapi_res_body.pagebean.songlist;
-			$window.location.href = '#/tab/search/searchlist';
+			console.log(data);
+			$scope.songlist = data.showapi_res_body.pagebean.songlist;
+			$window.location.href = '#/tab/search';
 		});
 	}
+})
+app.controller('searchlistCtrl',function($scope){
+	$scope.name = "abc";
 })
 
 app.controller('playCtrl',function($scope){
