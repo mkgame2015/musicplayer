@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="ionicApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="../js/ionic.bundle.js"></script>
+	<link rel="stylesheet" href="../css/ionic.css" />
+	<body ng-controller="indexCtrl">
+		<!--<h3>bar-light</h3>
+		<div class="bar bar-header bar-assertive">
+			<button class="button icon-left ion-home">左边</button>
+			<h1 class="title">今日头条</h1>
+			<button class="button button-outline icon-right ion-navicon button-balanced"></button>
+		</div>
+		<div class="bar bar-footer bar-balanced">
+			<button class="button icon-left ion-home">左边</button>
+			<div class="title">Footer</div>
+		</div>
+		<p>
+		</p>
+		<div class="button-bar bar-positive">
+			<a class="button">First</a>
+			<a class="button">Second</a>
+			<a class="button">Third</a>
+		</div>
+		<p></p>-->
+		<ion-header-bar class="bar-header bar-calm">
+			<div class="button">左边</div>
+			<h1 class="title">标题</h1>
+			<div class="button">右边</div>
+		</ion-header-bar>
+		<ion-footer-bar class="bar bar-footer bar-balanced">
+			<button class="button button-calm">左边</button>
+			<h1 class="title">标题</h1>
+		</ion-footer-bar>
+	</body>
+	<script>
+		var app = angular.module('ionicApp', ['ionic']);
+		app.controller('indexCtrl', function($scope) {
+			$scope.name = 'abc'
+		})
+	</script>
+
+</html>

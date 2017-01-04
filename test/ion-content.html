@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="ionicApp">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title></title>
+	</head>
+	<script src="../js/ionic.bundle.js"></script>
+	<link rel="stylesheet" href="../css/ionic.css" />
+	<body ng-controller="indexCtrl">
+		<ion-header-bar class="bar-header bar-calm">
+			<div class="button icon-left ion-star button-positive">左边</div>
+			<h1 class="title">标题</h1>
+			<div class="button">右边</div>
+		</ion-header-bar>
+		<ion-content>
+			123
+		</ion-content>
+
+		<ion-footer-bar class="bar bar-footer bar-balanced">
+			<button class="button button-calm">左边</button>
+			<h1 class="title">标题</h1>
+		</ion-footer-bar>
+	</body>
+	<script>
+		var app = angular.module('ionicApp', ['ionic']);
+		app.controller('indexCtrl', function($scope) {
+			$scope.name = 'abc'
+		})
+	</script>
+
+</html>

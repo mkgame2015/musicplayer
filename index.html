@@ -1,0 +1,129 @@
+<html ng-app="ionicApp">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+		<title>Tabs Example</title>
+
+		<link href="css/ionic.min.css" rel="stylesheet">
+		<script src="js/ionic.bundle.min.js"></script>
+		<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--头部-->
+		<ion-nav-bar animation="nav-title-slide-ios7" type="bar-light" back-button-type="button-icon" back-button-icon="ion-arrow-left-c"></ion-nav-bar>
+		<!--主体 -->
+		<ion-nav-view animation="slide-left-right"></ion-nav-view>
+		<!-- tab主体 -->
+		<script id="tabs.html" type="text/ng-template">
+			// 播放器
+			<audio id="ado" src=""></audio>
+			<ion-tabs tabs-style="tabs-icon-top" tabs-type="tabs-light">
+				// list
+				<ion-tab title="List" icon="ion-disc" href="#/tab/list">
+					<ion-nav-view name="list-tab"></ion-nav-view>
+				</ion-tab>
+				// 播放
+				<ion-tab title="Play" icon="ion-music-note" href="#/tab/play">
+					<ion-nav-view name="play-tab"></ion-nav-view>
+				</ion-tab>
+				// 搜索
+				<ion-tab title="Search" icon="ion-search" ui-sref="tabs.search">
+					<ion-nav-view name="search-tab"></ion-nav-view>
+				</ion-tab>
+			</ion-tabs>
+		</script>
+
+		<script id="list.html" type="text/ng-template">
+			<ion-view title="'List'">
+				<ion-content has-header="true" padding="false">
+					<ul class="list">
+						<li class="item" ng-repeat='songlist in songlists' ng-click='select(songlist.id)' style="color: #ff0099;font-weight: 500;">
+							{{songlist.listname}}
+						</li>
+					</ul>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<script id="facts.html" type="text/ng-template">
+			<ion-view title="'Facts'">
+				<ion-content has-header="true" padding="true">
+					<!--<ion-list style="font-family: 'MicrosoftYaHei';">
+						<a class="item item-thumbnail-left" href="" ng-repeat='song in songlist' ng-click='playsong($index)'>
+							<img ng-src="{{song.albumpic_small}}" />
+							<h2 style="font-weight: 900;">{{song.songname}}</h2>
+							<p>{{song.singername}}</p>
+						</a>
+					</ion-list>-->
+
+					<div class="list">
+						<a class="item item-avatar" href="" ng-repeat='song in songlist' ng-click='playsong($index)'>
+							<img ng-src="{{song.albumpic_small}}">
+							<h2 style="font-weight: 900;">{{song.songname}}</h2>
+							<p>{{song.singername}}</p>
+						</a>
+					</div>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<script id="play.html" type="text/ng-template">
+			<ion-view title="'Play'">
+				<ion-content has-header="true" padding="true">
+					<h3>Create hybrid mobile apps with the web technologies you love.</h3>
+					<p>Free and open source, Ionic offers a library of mobile-optimized HTML, CSS and JS components for building highly interactive apps.</p>
+					<p>Built with Sass and optimized for AngularJS.</p>
+					<p>
+						<a class="button icon icon-right ion-chevron-right" href="#/tab/navstack">Tabs Nav Stack</a>
+					</p>
+				</ion-content>
+			</ion-view>
+		</script>
+		<script id="nav-stack.html" type="text/ng-template">
+			<ion-view title="'Tab Nav Stack'">
+				<ion-content has-header="true" padding="true">
+					<p><img src="http://ionicframework.com/img/diagrams/tabs-nav-stack.png" style="width:100%"></p>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<script id="search.html" type="text/ng-template">
+			<ion-view title="'Search'">
+				<ion-content has-header="true" padding="false">
+					<div class="list list-inset">
+						<label class="item item-input">
+						    <i class="icon ion-search placeholder-icon"></i>
+						    <input type="text" placeholder="Search" ng-model="$parent.keyword" ng-change="search()" />
+						</label>
+					</div>
+					<ion-nav-view></ion-nav-view>
+				</ion-content>
+			</ion-view>
+		</script>
+
+		<script id="searchlist.html" type="text/ng-template">
+			<ion-view>
+				<ion-content has-header="false" padding="false">
+				<p>我是搜索页</p>
+
+					// <ion-list style="font-family: 'MicrosoftYaHei';">
+					// 	<a class="item item-thumbnail-left" href="" ng-repeat='song in songlist' ng-click='playsong($index)'>
+					// 		<img ng-src="{{song.albumpic_small}}" />
+					// 		<h2 style="font-weight: 900;">{{song.songname}}</h2>
+					// 		<p>{{song.singername}}</p>
+					// 	</a>
+					// </ion-list>
+				</ion-content>
+			</ion-view>
+		</script>
+	</body>
+	<style>
+		.active {
+			color: #ff0099;
+		}
+	</style>
+
+</html>

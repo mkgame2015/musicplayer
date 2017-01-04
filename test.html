@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app = 'app'>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="js/angular/angular.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		p{
+			background: red;
+		}
+	</style>
+</head>
+<body ng-controller = 'a'>
+	<div ng-controller = 'b'>
+		<div ng-controller='c'>
+			
+			<button ng-click='dianji()'>ok</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = angular.module('app',[]);
+	app.controller('a',function($scope){
+		$scope.$on('toa',function(event,data){
+			console.log(data);
+		});
+	});
+	app.controller('b',function($scope){
+//		$scope.dianji = function(){
+//			$scope.$emit('toa','woshia');
+//			$scope.$broadcast('toc','woshic');
+//		}
+//		$scope.$on('toc',function(event,data){
+//			console.log(data+'错')
+//		})
+	});
+	app.controller('c',function($scope){
+		$scope.dianji = function(){
+			$scope.$emit('toa','woshia');
+			$scope.$broadcast('toc','woshic');
+		}
+	});
+</script>
+</html>

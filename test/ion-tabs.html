@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="ionicApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title></title>
+	</head>
+	<script src="../js/ionic.bundle.js"></script>
+	<link rel="stylesheet" href="../css/ionic.css" />
+
+	<body ng-controller="indexCtrl">
+		<ion-header-bar class="bar bar-header bar-light">
+			<button class="button" ng-click="showDelete=!showDelete">返回</button>
+			<h1 class="title">标题</h1>
+			<button class="button" ng-click="showReorder=!showReorder">返回</button>
+		</ion-header-bar>
+		<ion-content class="content">
+			<ion-refresher></ion-refresher>
+			<ion-list can-swipe="true" show-reorder="showReorder" show-delete="showDelete" class="list">
+				<ion-item class="item">
+					基本卡片，包含了文本信息。
+
+					<ion-option-button class="button-royal">share</ion-option-button>
+					<ion-option-button class="button-dark">share</ion-option-button>
+
+					<ion-delete-button class="ion-minus-circled"></ion-delete-button>
+
+					<ion-reorder-button class="ion-navicon">
+					</ion-reorder-button>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<!--<div class="tabs">
+			<a class="tab-item">
+				主页
+			</a>
+			<a class="tab-item">
+				收藏
+			</a>
+			<a class="tab-item">
+				设置
+			</a>
+		</div>-->
+		<ion-tabs class="tabs-dark tabs-icon-only">
+			<ion-tab title="1" icon-on="ion-arrow-shrink" icon-off="ion-arrow-expand"></ion-tab>
+			<ion-tab title="2">1</ion-tab>
+			<ion-tab title="2">1</ion-tab>
+			<ion-tab title="2">1</ion-tab>
+		</ion-tabs>
+	</body>
+	<script>
+		var app = angular.module('ionicApp', ['ionic']);
+		app.controller('indexCtrl', function($scope) {
+			$scope.showDelete = false;
+			$scope.showReorder = false;
+		})
+	</script>
+
+</html>

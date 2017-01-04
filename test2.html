@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="js/ionic.bundle.min.js"></script>
+</head>
+<body ng-controller='ctrl'>
+	<div class="list list-inset">
+		<label class="item item-input">
+		    <i class="icon ion-search placeholder-icon"></i>
+			<input type="text" placeholder="Search" ng-model="name" ng-change="search()" />
+			</label>
+		</div>
+</body>
+<script>
+	var app = angular.module('app',['ionic']);
+	app.controller('ctrl',function($scope){
+		$scope.search = function(){
+			console.log($scope.name)
+		}
+	})
+</script>
+</html>
